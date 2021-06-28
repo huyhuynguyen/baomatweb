@@ -1,0 +1,21 @@
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+* {
+	box-sizing: inherit;
+}
+
+body {
+	margin: 0;
+}
+
+.main__container {
+    font-size: 1.5rem;
+    width: 420px;
+    padding: 36px;
+    border: 1px solid #000;
+    margin: 80px auto;
+    border-radius: 2.5rem;
+}
