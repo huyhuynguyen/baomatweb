@@ -1,0 +1,206 @@
+.main__link-to-TinTuc-container {
+    margin-bottom: 20px;
+}
+
+.main__link-to-TinTuc-btn {
+    padding: 5px 3px;
+    background-color: #0380A0;
+    border: 1px solid #0380A0;
+    color: #fff;
+    width: 200px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+.main__link-to-TinTuc-btn:hover {
+    cursor: pointer;
+    background-color: #02627a;
+    border: 1px solid #02627a;
+}
+
+.main__title-header {
+    margin: 0 0 10px 0;
+}
+
+.main__title-heading {
+    font-size: 3.6rem;
+    margin: 0;
+}
+
+.main__category-container {
+    margin: 0 0 30px 0;
+}
+
+.main__category {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.main__content-container {
+    width: 100%;
+}
+
+.main__content {
+    font-family: sans-serif;
+    white-space: pre-line;
+}
+
+.main__tintuc-image-container {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.main__comment-response-wrapper {
+    margin: 20px 0;
+}
+
+.main__comment-response-title {
+    font-size: 1.6rem;
+}
+
+.write__comment {
+    display: flex;
+    
+}
+
+.write__comment-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+    width: 55%;
+}
+
+.write__comment-content {
+    width: 100%;
+    height: 140px;
+    padding: 10px 12px;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+}
+
+.write__comment-btn {
+    align-self: flex-end;
+    width: 20%;
+    margin-top: 10px;
+    background-color: #009cd7;
+    border: 1px solid #009cd7;
+    border-radius: 5px;
+    color: #fff;
+    padding: 8px 10px;
+}
+
+.write__comment-btn:hover {
+    cursor: pointer;
+    background-color: #0077a4;
+    border-color: #005d80;
+    transition: 0.4s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Comment */
+.list__comment-item {
+    width: 58%;
+    margin: 20px 0;
+}
+
+.list__comment-item-comment {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.item-comment-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+
+.item-comment-fullname {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.item-comment-content {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Trả lời */
+.response__comment {
+    font-size: 1.3rem;
+}
+
+.response__comment:hover {
+    cursor: pointer;
+}
+
+.response__container {
+    margin: 20px 0 50px 0;
+}
+
+.input__write-response {
+    margin-bottom: 20px;
+}
+
+.input__write-response-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.write__response-content {
+    width: 100%;
+    height: 65px;
+    padding: 10px 12px;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+}
+
+.send__response {
+    /* align-self: flex-end; */
+    width: 20%;
+    margin-top: 10px;
+    background-color: #9a00d7;
+    border: 1px solid #9a00d7;
+    border-radius: 5px;
+    color: #fff;
+    padding: 8px 10px;
+}
+
+.send__response:hover {
+    cursor: pointer;
+    background-color: #8204b4;
+    border-color: #8204b4;
+    transition: 0.4s;
+}
+
+/* Response */
+.list__response-item {
+    margin: 20px 0;
+}
+
+.list__response-item:first-child {
+    margin-top: 0;
+}
+
+.list__response-item-response {
+    display: flex;
+}
+
+.item-response-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+
+.item-response-fullname {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.item-response-content {
+    margin: 0;
+    font-size: 1.5rem;
+}

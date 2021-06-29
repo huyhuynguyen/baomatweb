@@ -1,0 +1,43 @@
+.main__title-header {
+    margin: 0 0 20px 0;
+}
+
+.main__title-heading {
+    margin: 0;
+    font-size: 3.6rem;
+    text-align: center;
+    color: #02627a;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.main__banner-container {
+    width: 100%;
+    height: 380px;
+}
+
+.main__banner-image {
+    width: 100%;
+    height: 100%;
+}
+
+.main__linkToTinTuc-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+} 
+
+.main__linkToTinTuc-btn {
+    padding: 15px 10px;
+    background-color: #0380A0;
+    border: 1px solid #0380A0;
+    color: #fff;
+    width: 360px;
+    border-radius: 5px;
+    font-size: 1.7rem;
+}
+
+.main__linkToTinTuc-btn:hover {
+    cursor: pointer;
+    background-color: #02627a;
+    border: 1px solid #02627a;
+}

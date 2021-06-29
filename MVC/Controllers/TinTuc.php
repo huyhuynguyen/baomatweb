@@ -67,7 +67,7 @@
         }
 
         function XuLySuaTinTuc($id) {
-            if (isset($_POST["update"]) && $_POST["update"]=="Update") {
+            if (isset($_POST["update"]) && $_POST["update"]=="UPDATE") {
                 $tieude=$_POST["title"];
                 $noidung=$_POST["content"];
                 $hinhanh=$_POST["imageName"];

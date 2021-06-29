@@ -1,23 +1,29 @@
 <div>
-    <div>
-        <a href="http://localhost/BMW/TinTuc/NewsList">Xem toàn bộ tin tức</a>
+    <div class='main__link-to-TinTuc-container'>
+        <a href="http://localhost/BMW/TinTuc/NewsList" class='main__link-to-TinTuc-link'>
+            <button class='main__link-to-TinTuc-btn'> << Xem toàn bộ tin tức</button>
+        </a>
     </div>
+
     <div id="detail-tintuc"></div>
 
-    <h4>Bình luận (<span id="sumOfCommentAndRep"></span>)</h4>
-    <div>
-        <div class="write__comment">
-            <img src="#" id="avatar" alt="" width="37px" height="37px">
-            <div>
-                <textarea name="comment" id="" cols="60" rows="2"></textarea>
-                <button id="send__comment">Gửi</button>
+    <div class="main__comment-response-wrapper">
+        <h4 class="main__comment-response-title">Bình luận (<span id="sumOfCommentAndRep"></span>)</h4>
+        <div class="main__comment-response-container">
+            <div class="write__comment">
+                <img src="#" id="avatar" alt="" width="37px" height="37px">
+                <div class="write__comment-container">
+                    <textarea name="comment" id="" placeholder="Nhập bình luận" class="write__comment-content"></textarea>
+                    <button id="send__comment" class="write__comment-btn">Gửi bình luận</button>
+                </div>
+            </div>
+
+            <div class="view__comment">
+                <ul class="list__comment"></ul>
             </div>
         </div>
-
-        <div class="view__comment">
-            <ul class="list__comment"></ul>
-        </div>
     </div>
+    
 </div>
 
 <script>
@@ -32,11 +38,13 @@
                 if (arrPhanHoi.length>0) {
                     arrPhanHoi=arrPhanHoi.map(function(phanhoi) {
                         return `
-                            <li>
-                                <div>
+                            <li class="list__response-item">
+                                <div class="list__response-item-response">
                                     <img src="http://localhost/BMW/public/images/${phanhoi["avatar"]}" alt="" width="37px" height="37px">
-                                    <h5>${phanhoi["fullname"]}</h5>
-                                    <p>${phanhoi["noidung"]}</p>
+                                    <div class="item-response-container">
+                                        <h5 class="item-response-fullname">${phanhoi["fullname"]}</h5>
+                                        <p class="item-response-content">${phanhoi["noidung"]}</p>
+                                    </div>
                                 </div>
                             </li>
                         `;
@@ -46,19 +54,23 @@
                     },"");
                 }
                 return `
-                    <li data=${comment["id"]}>
-                        <div>
+                    <li data=${comment["id"]} class="list__comment-item">
+                        <div class="list__comment-item-comment">
                             <img src="http://localhost/BMW/public/images/${comment["avatar"]}" alt="" width="37px" height="37px">
-                            <h5>${comment["fullname"]}</h5>
-                            <p>${comment["noidung"]}</p>
+                            <div class="item-comment-container">
+                                <h5 class="item-comment-fullname">${comment["fullname"]}</h5>
+                                <p class="item-comment-content">${comment["noidung"]}</p>
+                            </div>
                         </div>
                         <div>
                             <span class="response__comment">Trả lời</span>
                         </div>
                         <div class="response__container">
                             <div style="display: none;" class="input__write-response">
-                                <textarea name="response" id="" cols="60" rows="2"></textarea>
-                                <button class="send__response">Gửi</button>
+                                <div class="input__write-response-container">
+                                    <textarea name="response" id="" placeholder="Nhập phản hồi" class="write__response-content"></textarea>
+                                    <button class="send__response">Gửi phản hồi</button>
+                                </div>
                             </div>
                             <ul class="list__response">
                                 ${phanhoiElement}
@@ -73,7 +85,7 @@
             });
         }
         else {
-            htmls="<ul class='list__comment'>No comment</ul>";
+            htmls="No comment";
         }
         return {
             "htmls" : htmls,
@@ -104,11 +116,19 @@
     }
     else {
         htmls=`
-            <h4>${obj["tieude"]}</h4>
-            <p>Thể loại: ${obj["theloai"]}</p>
-            <p>${obj["noidung"]}</p>
-            <div>
-                <img src="http://localhost/BMW/public/images/${obj["hinhanh"]}" alt="">
+            <div class="main__title-header">
+                <h2 class="main__title-heading">${obj["tieude"]}</h2>
+            </div>
+            <div class="main__category-container">
+                <p class="main__category">Thể loại: <i>${obj["theloai"]}</i></p>
+            </div>
+            
+            <div class="main__tintuc-image-container">
+                <img src="http://localhost/BMW/public/images/${obj["hinhanh"]}" alt="" class="main__tintuc-image">
+            </div>
+
+            <div class="main__content-container">
+                <p class="main__content">${obj["noidung"]}</p>
             </div>
         `;
     }
@@ -123,12 +143,7 @@
     var commentListElement=document.querySelector('.list__comment');
     sum+=arrComment.length;
     var commentShowObject=HienThi(arrComment);
-    if (arrComment.length>0) {
-        commentListElement.innerHTML=commentShowObject["htmls"];
-    }
-    else {
-        commentListElement.parentNode.innerHTML=commentShowObject["htmls"];
-    }
+    commentListElement.innerHTML=commentShowObject["htmls"];
     sumOfCommentAndRepElement.innerHTML=commentShowObject["sum"];
 
     // nhấn nút gửi bình luận
@@ -150,23 +165,24 @@
                     },
                     success: function(data) {
                         sum+=1;
-                        var commentListElement=document.querySelector('.list__comment');
                         if (commentListElement.innerText=="No comment") {
                             console.log(1);
                             commentListElement.innerHTML=`
-                                <li data="${data["id"]}">
-                                    <div>
+                                <li data="${data["id"]}" class="list__comment-item">
+                                    <div class="list__comment-item-comment">
                                         <img src="http://localhost/BMW/public/images/${currentUser["avatar"]}" alt="" width="37px" height="37px">
-                                        <h5>${currentUser["fullname"]}</h5>
-                                        <p>${data["noidung"]}</p>
+                                        <div class="item-comment-container">
+                                            <h5 class="item-comment-fullname">${currentUser["fullname"]}</h5>
+                                            <p class="item-comment-content">${data["noidung"]}</p>
+                                        </div>
                                     </div>
                                     <div>
                                         <span class="response__comment">Trả lời</span>
                                     </div>
                                     <div class="response__container">
                                         <div style="display: none;" class="input__write-response">
-                                            <textarea name="" id="" cols="60" rows="2"></textarea>
-                                            <button class="send__response">Gửi</button>
+                                            <textarea name="" id="" placeholder="Nhập phản hồi" class="write__response-content"></textarea>
+                                            <button class="send__response">Gửi phản hồi</button>
                                         </div>
                                         <ul class="list__response">
                                             
@@ -177,19 +193,21 @@
                         }
                         else {
                             commentListElement.innerHTML+=`
-                                <li data="${data["id"]}">
-                                    <div>
+                                <li data="${data["id"]}" class="list__comment-item">
+                                    <div class="list__comment-item-comment">
                                         <img src="http://localhost/BMW/public/images/${currentUser["avatar"]}" alt="" width="37px" height="37px">
-                                        <h5>${currentUser["fullname"]}</h5>
-                                        <p>${data["noidung"]}</p>
+                                        <div class="item-comment-container">
+                                            <h5 class="item-comment-fullname">${currentUser["fullname"]}</h5>
+                                            <p class="item-comment-content">${data["noidung"]}</p>
+                                        </div>
                                     </div>
                                     <div>
                                         <span class="response__comment">Trả lời</span>
                                     </div>
                                     <div class="response__container">
                                         <div style="display: none;" class="input__write-response">
-                                            <textarea name="" id="" cols="60" rows="2"></textarea>
-                                            <button class="send__response">Gửi</button>
+                                            <textarea name="" id="" placeholder="Nhập phản hồi" class="write__response-content"></textarea>
+                                            <button class="send__response">Gửi phản hồi</button>
                                         </div>
                                         <ul class="list__response">
                                             
@@ -233,11 +251,13 @@
                                         success: function(data) {
                                             sum+=1;
                                             responseListElement.innerHTML+=`
-                                                <li>
-                                                    <div>
+                                                <li class="list__response-item">
+                                                    <div class="list__response-item-response">
                                                         <img src="http://localhost/BMW/public/images/${currentUser["avatar"]}" alt="" width="37px" height="37px">
-                                                        <h5>${currentUser["fullname"]}</h5>
-                                                        <p>${data}</p>
+                                                        <div class="item-response-container">
+                                                            <h5 class="item-response-fullname">${currentUser["fullname"]}</h5>
+                                                            <p class="item-response-content">${data}</p>
+                                                        </div>
                                                     </div>
                                                 </li>
                                             `;
@@ -286,11 +306,13 @@
                     success: function(data) {
                         sum+=1;
                         responseListElement.innerHTML+=`
-                            <li>
-                                <div>
+                            <li class="list__response-item">
+                                <div class="list__response-item-response">
                                     <img src="http://localhost/BMW/public/images/${currentUser["avatar"]}" alt="" width="37px" height="37px">
-                                    <h5>${currentUser["fullname"]}</h5>
-                                    <p>${data}</p>
+                                    <div class="item-response-container">
+                                        <h5 class="item-response-fullname">${currentUser["fullname"]}</h5>
+                                        <p class="item-response-content">${data}</p>
+                                    </div>
                                 </div>
                             </li>
                         `;

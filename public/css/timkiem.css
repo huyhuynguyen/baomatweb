@@ -1,0 +1,124 @@
+.main__title-header {
+    margin: 0 0 20px 0;
+}
+
+.main__title-heading {
+    margin: 0;
+    font-size: 3.6rem;
+    text-align: center;
+    color: #02627a;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.main__form-search-container {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.main__form-search {
+    border: 1px solid #333;
+    border-radius: 10px;
+    width: 40%;
+    display: flex;
+    padding: 5px 15px;
+}
+
+.main__form-search-input {
+    border: none;
+    width: 100%;
+}
+
+.main__form-search-input:focus {
+    outline: none;
+}
+
+.main__form-search-number-result-container {
+    margin-bottom: 20px;
+}
+
+.main__form-search-number-result {
+    font-style: italic;
+    margin: 0;
+}
+
+#number_searchItem {
+    font-weight: bold;
+}
+
+.search-result__container {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+}
+
+.list-tintuc-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #333;
+    padding: 30px 20px;
+    margin: 30px 0;
+}
+
+.list-tintuc-item:first-child {
+    margin-top: 0;
+}
+
+.list-tintuc-item-image-container {
+    width: 80px;
+    height: 80px;
+}
+
+.list-tintuc-item-image {
+    width: 100%;
+    height: 100%;
+}
+
+.list-tintuc-item-header {
+    margin: 0 20px;
+}
+
+.list-tintuc-item-heading {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.list-tintuc-item-heading-link {
+    text-decoration: none;
+    color: #525252;
+    font-size: 2.2rem;
+}
+
+.list-tintuc-item-heading-link:hover {
+    color: #000;
+}
+
+.edit_Tintuc, .delete_Tintuc {
+    background-color: #0380A0;
+    border: 1px solid #0380A0;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin: 0 10px;
+    width: 80px;
+}
+
+.edit_Tintuc:hover, .delete_Tintuc:hover {
+    cursor: pointer;
+    background-color: #02627a;
+    border: 1px solid #02627a;
+}
+
+.edit_Tintuc {
+    margin-left: 0;
+}
+
+.delete_Tintuc {
+    background-color: #f30b0b;
+    border: 1px solid #f30b0b;
+}
+
+.delete_Tintuc:hover {
+    background-color: #d10808;
+    border: 1px solid #d10808;
+}

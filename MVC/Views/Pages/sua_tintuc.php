@@ -1,38 +1,51 @@
 <div>
-    <div>
-        <a href="http://localhost/BMW/TinTuc/NewsList">Xem toàn bộ tin tức</a>
+    <div class='main__link-to-TinTuc-container'>
+        <a href="http://localhost/BMW/TinTuc/NewsList" class='main__link-to-TinTuc-link'>
+            <button class='main__link-to-TinTuc-btn'> << Xem toàn bộ tin tức</button>
+        </a>
     </div>
 
-    <h2>Sửa Tin Tức</h2>
-    <form action="" method="post" id="form_update_tintuc">
-        <div class="form__group">
-            <label for="title">Tiêu đề: </label>
-            <input type="text" name="title" id="title" required>
-        </div>
-        <div class="form__group">
-            <label for="categories_update">Thể loại: </label>
-            <select name="categories_update" id="categories_update">
-                <option value="" disabled>Chọn thể loại</option>
-            </select>
-        </div>
-        <div class="form__group">
-            <label for="content">Nội dung: </label>
-            <textarea name="content" id="content" cols="30" rows="10" required></textarea>
-        </div>
-        <div class="form__group">
-            <label for="image">Hình ảnh: </label>
-            <img src="#" alt="no image" id="image">
-            <input type="text" name="imageName" id="imageName" readonly>
-            <div>
-                <input type="button" value="Edit Image" id="edit_image">
+    <div class="main__title-header">
+        <h2 class="main__title-heading">Sửa Tin Tức</h2>
+    </div>
+
+    <div class="main__form-container">
+        <form action="" method="post" id="form_update_tintuc" class="main__form">
+            <div class="form__group">
+                <label for="title">Tiêu đề (*): </label>
+                <textarea name="title" id="title" placeholder="Nhập tiêu đề" required></textarea>
             </div>
-            <div id="container-changeImage">
+            <div class="form__group">
+                <label for="categories_update">Thể loại: </label>
+                <select name="categories_update" id="categories_update">
+                    <option value="" disabled>Chọn thể loại</option>
+                </select>
             </div>
-        </div>
-        <div class="form__group">
-            <input type="submit" value="Update" name="update">
-        </div>
-    </form>
+            <div class="form__group">
+                <label for="content">Nội dung (*): </label>
+                <textarea name="content" id="content" cols="30" rows="10" required></textarea>
+            </div>
+            <div class="form__group">
+                <label for="image">Hình ảnh: </label>
+                <div class="form__group-tintuc-image-container">
+                    <img src="#" alt="no image" id="image" class="form__group-tintuc-image">
+                </div>
+                <div class="form__group-tintuc-imageName-container">   
+                    <input type="text" name="imageName" id="imageName" class="form__group-tintuc-imageName-input" readonly>
+                </div>
+                
+                <div class="form__group-tintuc-image-editBtn-container">
+                    <input type="button" value="Edit Image" id="edit_image" class="form__group-tintuc-image-editBtn">
+                </div>
+                <div id="container-changeImage">
+                </div>
+            </div>
+            <div class="form__group">
+                <input type="submit" value="UPDATE" name="update">
+            </div>
+        </form>
+    </div>
+    
 </div>
 
 <script>
@@ -59,7 +72,7 @@
 
     var formElement=document.querySelector('#form_update_tintuc');
     formElement.setAttribute('action', `../XuLySuaTinTuc/${obj["id"]}`);
-    formElement.querySelector('input[id="title"]').value=obj["tieude"];
+    formElement.querySelector('textarea[id="title"]').value=obj["tieude"];
     formElement.querySelector('textarea[id="content"]').innerHTML=obj["noidung"];
     formElement.querySelector('img#image').setAttribute('src', `http://localhost/BMW/public/images/${obj["hinhanh"]}`);
     formElement.querySelector('input[id="imageName"]').value=obj["hinhanh"];

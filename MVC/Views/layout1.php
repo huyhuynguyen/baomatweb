@@ -7,6 +7,26 @@
     <title><?php echo $data["Page"] ?></title>
     <link rel="stylesheet" href="http://localhost/BMW/public/css/layout1.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <?php
+        if ($data["Page"]=="home") {
+            echo "<link rel='stylesheet' href='http://localhost/BMW/public/css/home.css'>";
+        }
+        if ($data["Page"]=="tintuc") {
+            echo "<link rel='stylesheet' href='http://localhost/BMW/public/css/tintuc.css'>";
+        }
+        if ($data["Page"]=="timkiem") {
+            echo "<link rel='stylesheet' href='http://localhost/BMW/public/css/timkiem.css'>";
+        }
+        if ($data["Page"]=="them_tintuc") {
+            echo "<link rel='stylesheet' href='http://localhost/BMW/public/css/themtintuc.css'>";
+        }
+        if ($data["Page"]=="sua_tintuc") {
+            echo "<link rel='stylesheet' href='http://localhost/BMW/public/css/suatintuc.css'>";
+        }
+        if ($data["Page"]=="detail_tintuc") {
+            echo "<link rel='stylesheet' href='http://localhost/BMW/public/css/detailtintuc.css'>";
+        }
+    ?>
 </head>
 <body>
     <?php
@@ -30,8 +50,10 @@
                     <div>
                         <p>Fullname: <span><?php echo $_SESSION["fullname"] ?></span></p>
                     </div>
-                    <div>
-                        <button id="logout">Logout</button>
+                    <div class="header__logoutBtn-container">
+                        <a href="http://localhost/BMW/Unset" class="header__logoutBtn-link">
+                            <button id="logout" class="header__logoutBtn">Logout</button>
+                        </a>
                     </div>
                 </div>
                 
@@ -88,13 +110,5 @@
             </div>
         </footer>
     </div>
-    
-
-    <script>
-        var btn=document.querySelector('#logout');
-        btn.onclick=function(e) {
-            window.location="http://localhost/BMW/Unset";
-        }
-    </script>
 </body>
 </html>

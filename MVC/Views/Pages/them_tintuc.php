@@ -1,32 +1,41 @@
 <div>
-    <div>
-        <a href="http://localhost/BMW/TinTuc/NewsList">Xem toàn bộ tin tức</a>
+    
+    <div class='main__link-to-TinTuc-container'>
+        <a href="http://localhost/BMW/TinTuc/NewsList" class='main__link-to-TinTuc-link'>
+            <button class='main__link-to-TinTuc-btn'> << Xem toàn bộ tin tức</button>
+        </a>
     </div>
 
-    <h2>Thêm Tin Tức</h2>
-    <form action="./XuLyThemTinTuc" method="post">
-        <div class="form__group">
-            <label for="title">Tiêu đề: </label>
-            <input type="text" name="title" id="title" required>
-        </div>
-        <div class="form__group">
-            <label for="categories">Thể loại: </label>
-            <select name="categories" id="categories">
-                <option value="" selected disabled>Chọn thể loại</option>
-            </select>
-        </div>
-        <div class="form__group">
-            <label for="content">Nội dung: </label>
-            <textarea name="content" id="content" cols="30" rows="10" required></textarea>
-        </div>
-        <div class="form__group">
-            <label for="image">Thêm hình ảnh: </label>
-            <input type="file" name="image" id="image">
-        </div>
-        <div class="form__group">
-            <input type="submit" value="Create" name="create">
-        </div>
-    </form>
+    <div class="main__title-header">
+        <h2 class="main__title-heading">Thêm Tin Tức</h2>
+    </div>
+
+    <div class="main__form-container">
+        <form action="./XuLyThemTinTuc" method="post" class="main__form">
+            <div class="form__group">
+                <label for="title">Tiêu đề (*): </label>
+                <textarea name="title" id="title" placeholder="Nhập tiêu đề" required></textarea>
+            </div>
+            <div class="form__group">
+                <label for="categories">Thể loại (*): </label>
+                <select name="categories" id="categories">
+                    <option value="" disabled>Chọn thể loại</option>
+                </select>
+            </div>
+            <div class="form__group">
+                <label for="content">Nội dung (*): </label>
+                <textarea name="content" id="content" placeholder="Nhập nội dung" required></textarea>
+            </div>
+            <div class="form__group">
+                <label for="image">Thêm hình ảnh: </label>
+                <input type="file" name="image" id="image">
+            </div>
+            <div class="form__group">
+                <input type="submit" value="CREATE" name="create">
+            </div>
+        </form>
+    </div>
+    
 
     <div>
         <?php

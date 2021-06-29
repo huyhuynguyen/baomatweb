@@ -10,12 +10,12 @@
         ?>
         <form action="./DangNhap/XuLyDangNhap" method="post" class="main__form-login">
             <div class="form__login-group">
-                <label for="username">Username: </label>
-                <input type="text" name="username" id="username">
+                <label for="username">Username (*): </label>
+                <input type="text" name="username" id="username" required>
             </div>
             <div class="form__login-group">
-                <label for="password">Password: </label>
-                <input type="password" name="password" id="password">
+                <label for="password">Password (*): </label>
+                <input type="password" name="password" id="password" required>
             </div>
             <div class="form__login-group">
                 <input type="submit" value="Login" name="login">

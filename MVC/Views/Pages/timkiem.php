@@ -1,13 +1,20 @@
 <div>
-    <h3>Tìm kiếm</h3>
-    <div>
-        <div id="form__search">
-            <input type="search" name="search" id="search" value="<?php echo $_SESSION["timkiem"]; ?>">
+    <div class="main__title-header">
+        <h2 class="main__title-heading">Tìm kiếm</h2>
+    </div>
+
+    <div class="main__form-search-container">
+        <div id="form__search" class="main__form-search">
+            <input type="search" name="search" id="search" value="<?php echo $_SESSION["timkiem"]; ?>" placeholder="Tìm kiếm" class="main__form-search-input">
+            <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" class="main__form-search-icon">
         </div>
     </div>
 
-    <p>Có <span id="number_searchItem">2</span> kết quả tìm kiếm</p>
-    <div>
+    <div class="main__form-search-number-result-container">
+        <p class="main__form-search-number-result">Có <span id="number_searchItem"></span> kết quả tìm kiếm</p>
+    </div>
+    
+    <div class="main__list-tintuc-container">
         <ul class="search-result__container"></ul>
     </div>
 </div>
@@ -23,14 +30,24 @@
         var ulElement=document.querySelector('.search-result__container');
         var arrItem=arr.map(function(item) {
             return `
-                <li dataId="${item["id"]}">
-                    <h4>
-                        <p>
-                            <a href="http://localhost/BMW/TinTuc/Detail/${item["id"]}">${item["tieude"]}</a>
+                <li dataId="${item["id"]}" class="list-tintuc-item">
+                    <div class="list-tintuc-item-image-container">
+                        <a href="http://localhost/BMW/TinTuc/Detail/${item["id"]}">
+                            <img src="http://localhost/BMW/public/images/${item["hinhanh"]}" alt="image" class="list-tintuc-item-image">
+                        </a>
+                    </div>
+                    <h4 class="list-tintuc-item-header">
+                        <p class="list-tintuc-item-heading">
+                            <a href="http://localhost/BMW/TinTuc/Detail/${item["id"]}" class="list-tintuc-item-heading-link">${item["tieude"]}</a>
                         </p>
                         <?php
                             if (isset($_SESSION["role"]) && $_SESSION["role"]==0) 
-                                echo "<div><button class='edit_Tintuc'>Edit</button> <button class='delete_Tintuc'>Delete</button></div>";
+                                echo "
+                                    <div>
+                                        <button class='edit_Tintuc'>Edit</button> 
+                                        <button class='delete_Tintuc'>Delete</button>
+                                    </div>
+                                ";
                         ?>
                         
                     </h4>

@@ -1,7 +1,7 @@
 html {
 	box-sizing: border-box;
 	font-size: 62.5%;
-	
+	font-family: sans-serif;
 }
 
 * {
@@ -52,13 +52,28 @@ header {
     margin-left: 20px;
 }
 
+.header__logoutBtn {
+    background-color: #0380A0;
+    border: 1px solid #0380A0;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+.header__logoutBtn:hover {
+    cursor: pointer;
+    background-color: #02627a;
+    border: 1px solid #02627a;
+}
+
 
 
 /* Main Page */
 main {
     font-size: 1.8rem;
-    margin-bottom: 20px;
-    margin: 30px 80px;
+    margin: 10px 80px;
+    margin-bottom: 30px;
     flex: 1 0 auto;
 }
 
@@ -72,7 +87,7 @@ footer {
 }
 
 .footer__container {
-    padding: 5px 80px;
+    padding: 15px 80px;
 }
 
 .footer__content-info-container {
@@ -100,18 +115,18 @@ footer {
 }
 
 
-
-
 .footer__copyrightInfo-container {
     display: flex;
     font-size: 1.4rem;
     justify-content: center;
+    align-items: center;
 }
 
 .footer__copyrightInfo-list {
     list-style: none;
     display: flex;
     margin-top: 0;
+    margin-bottom: 0;
 }
 
 .footer__copyrightInfo-item {

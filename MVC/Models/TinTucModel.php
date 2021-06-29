@@ -10,7 +10,8 @@
                 $obj = array(
                     "id" => $row["id"],
                     "tieude" => $row["tieude"],
-                    "noidung" => $row["noidung"]
+                    "noidung" => $row["noidung"],
+                    "hinhanh" => $row["hinhanh"]
                 );
                 array_push($arr, $obj);
             }
