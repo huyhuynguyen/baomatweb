@@ -4,6 +4,7 @@
             $arrTinTuc=$this->model("TinTucModel")->getAllTinTuc();
             $this->view("layout1", [
                 "Page" => "tintuc",
+                "titlePage" => "Tin Tức",
                 "arrTinTuc" => $arrTinTuc
             ]);
         }
@@ -14,6 +15,7 @@
             $arrComment=$this->model("CommentModel")->getAllCommentForPost($id);
             $this->view("layout1", [
                 "Page" => "detail_tintuc",
+                "titlePage" => "Chi tiết tin tức",
                 "itemTin" => $itemTin,
                 "currentUser" => $currentUser,
                 "arrComment" => $arrComment
@@ -23,14 +25,15 @@
         function ThemTinTuc() {
             $this->view("layout1", [
                 "Page" => "them_tintuc",
+                "titlePage" => "Thêm tin tức",
                 "arrCategories" => $this->model("TinTucModel")->getAllTheLoai()
             ]);
         }
 
         function XuLyThemTinTuc() {
             if (isset($_POST["create"])) {
-                $tieude=$_POST["title"];
-                $noidung=$_POST["content"];
+                $tieude=strip_tags($_POST["title"]);
+                $noidung=strip_tags($_POST["content"]);
                 $theloai=$_POST["categories"];
                 $hinhanh=$_POST["image"];
 
@@ -53,14 +56,19 @@
         }
 
         function XoaTinTuc() {
-            $idTinTuc=$_POST["id"];
-            $result=$this->model("TinTucModel")->DeleteNews($idTinTuc);
-            echo $result;
+            if (isset($_SESSION["role"]) && $_SESSION["role"]==1) 
+                header("Location: http://localhost/BMW/ErrorPage");
+            else {
+                $idTinTuc=$_POST["id"];
+                $result=$this->model("TinTucModel")->DeleteNews($idTinTuc);
+                echo $result;
+            }
         }
 
         function SuaTinTuc($id) {
             $this->view("layout1", [
                 "Page" => "sua_tintuc",
+                "titlePage" => "Sửa Tin Tức",
                 "itemTin" => $this->model("TinTucModel")->getTinTucById($id),
                 "arrCategories" => $this->model("TinTucModel")->getAllTheLoai()
             ]);
@@ -68,8 +76,8 @@
 
         function XuLySuaTinTuc($id) {
             if (isset($_POST["update"]) && $_POST["update"]=="UPDATE") {
-                $tieude=$_POST["title"];
-                $noidung=$_POST["content"];
+                $tieude=strip_tags($_POST["title"]);
+                $noidung=strip_tags($_POST["content"]);
                 $hinhanh=$_POST["imageName"];
                 $idloai=$_POST["categories_update"];
                 
@@ -80,7 +88,7 @@
         }
 
         function InsertComment() {
-            $noidung=$_POST["noidung"];
+            $noidung=strip_tags($_POST["noidung"]);
             $username=$_POST["username"];
             $idtin=$_POST["idtin"];
 
@@ -89,7 +97,7 @@
         }
 
         function InsertPhanHoi() {
-            $noidung=$_POST["noidung"];
+            $noidung=strip_tags($_POST["noidung"]);
             $username=$_POST["username"];
             $idcomment=$_POST["idcomment"];
 

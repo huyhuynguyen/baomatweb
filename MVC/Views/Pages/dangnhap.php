@@ -22,6 +22,10 @@
             </div>
         </form>
 
+        <div class="main__forgot-password-container">
+            <a href="http://localhost/BMW/ForgotPassword" class="main__forgot-password-link">Quên mật khẩu?</a>
+        </div>
+
         <div class="main__no-account-container">
             <p class="main__no-account-text">Chưa có tài khoản?</p>
             <a href="http://localhost/BMW/DangKy" class="main__signUp-link">Sign Up</a>

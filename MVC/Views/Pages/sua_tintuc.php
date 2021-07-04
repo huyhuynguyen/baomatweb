@@ -1,4 +1,8 @@
 <div>
+    <?php
+        if (isset($_SESSION["role"]) && $_SESSION["role"]==1) 
+            header("Location: http://localhost/BMW/ErrorPage");   
+    ?>
     <div class='main__link-to-TinTuc-container'>
         <a href="http://localhost/BMW/TinTuc/NewsList" class='main__link-to-TinTuc-link'>
             <button class='main__link-to-TinTuc-btn'> << Xem toàn bộ tin tức</button>

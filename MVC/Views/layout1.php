@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $data["Page"] ?></title>
+    <title><?php echo $data["titlePage"] ?></title>
     <link rel="stylesheet" href="http://localhost/BMW/public/css/layout1.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?php
@@ -25,6 +25,9 @@
         }
         if ($data["Page"]=="detail_tintuc") {
             echo "<link rel='stylesheet' href='http://localhost/BMW/public/css/detailtintuc.css'>";
+        }
+        if($data["Page"]=="errorpage") {
+            echo "<link rel='stylesheet' href='http://localhost/BMW/public/css/errorpage.css'>";
         }
     ?>
 </head>

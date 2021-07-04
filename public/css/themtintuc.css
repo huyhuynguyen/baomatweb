@@ -89,6 +89,15 @@
     margin-top: 10px;
 }
 
+.form__group #img_show {
+    margin-top: 10px;
+}
+
+.form__group #img_show img {
+    width: 40%;
+    object-fit: contain;
+}
+
 .form__group input[name="create"] {
     padding: 10px 0;
     font-size: 1.5rem;

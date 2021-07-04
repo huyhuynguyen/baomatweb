@@ -44,6 +44,25 @@
             $row=$result->fetch_assoc();
             return json_encode($row);
         }
+
+        function ResetPassword($username, $password) {
+            $qr1="SELECT username FROM user WHERE username=?";
+            $stmt1 = $this->conn->prepare($qr1);
+            $stmt1->bind_param("s", $username);
+            $stmt1->execute();
+            $result = $stmt1->get_result(); // get the mysqli result
+            
+            if ($result->num_rows==1) {
+                $qr="UPDATE user SET password=? WHERE username=?";
+                $stmt = $this->conn->prepare($qr);
+                $stmt->bind_param("ss", $password, $username);
+                $stmt->execute();
+
+                return 1;
+            }
+
+            return 0;
+        }
         
     }
 ?>

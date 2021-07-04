@@ -3,7 +3,8 @@
         function Search($searchText) {
             $this->view("layout1", [
                 "Page" => "timkiem",
-                "arrSearchTintuc" => $this->model("TinTucModel")->searchTinTuc($searchText)
+                "titlePage" => "Tìm kiếm",
+                "arrSearchTintuc" => $this->model("TinTucModel")->searchTinTuc(strip_tags($searchText))
             ]);
         }
     }

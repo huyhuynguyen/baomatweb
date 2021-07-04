@@ -7,14 +7,15 @@
             }
             
             $this->view("layout2", [
-                "Page" => "dangnhap"
+                "Page" => "dangnhap",
+                "titlePage" => "Đăng Nhập"
             ]);
         }
 
         function XuLyDangNhap() {
             if (isset($_POST["login"])) {
-                $username=$_POST["username"];
-                $password=$_POST["password"];
+                $username=strip_tags($_POST["username"]);
+                $password=strip_tags($_POST["password"]);
 
                 $fullname=$this->model("TaiKhoanModel")->getFullName($username, $password);
                 if ($fullname) {

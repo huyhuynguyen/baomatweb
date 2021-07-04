@@ -7,15 +7,16 @@
             }
                 
             $this->view("layout2", [
-                "Page" => "dangky"
+                "Page" => "dangky",
+                "titlePage" => "Đăng Ký"
             ]);
         }
 
         function XuLyDangKy() {
             if (isset($_POST["signup"])) {
-                $username=$_POST["username"];
-                $password=$_POST["password"];
-                $fullname=$_POST["fullname"];
+                $username=strip_tags($_POST["username"]);
+                $password=strip_tags($_POST["password"]);
+                $fullname=strip_tags($_POST["fullname"]);
 
                 if ($this->model("TaikhoanModel")->checkSignUp($username)==0) {
                     $this->model("TaikhoanModel")->insertUser($username, $password, $fullname);

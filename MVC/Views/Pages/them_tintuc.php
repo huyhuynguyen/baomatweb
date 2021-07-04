@@ -1,5 +1,8 @@
 <div>
-    
+    <?php
+        if (isset($_SESSION["role"]) && $_SESSION["role"]==1) 
+            header("Location: http://localhost/BMW/ErrorPage");   
+    ?>
     <div class='main__link-to-TinTuc-container'>
         <a href="http://localhost/BMW/TinTuc/NewsList" class='main__link-to-TinTuc-link'>
             <button class='main__link-to-TinTuc-btn'> << Xem toàn bộ tin tức</button>
@@ -28,7 +31,10 @@
             </div>
             <div class="form__group">
                 <label for="image">Thêm hình ảnh: </label>
-                <input type="file" name="image" id="image">
+                <input type="file" name="image" id="image" accept="image/*">
+                <div id="img_show">
+                    
+                </div>
             </div>
             <div class="form__group">
                 <input type="submit" value="CREATE" name="create">
@@ -64,4 +70,34 @@
         return acc+item;
     },"");
     theloaiList.innerHTML+=htmls;
+
+    var imgFile=document.querySelector('input[id="image"]');
+    imgFile.onchange=function(e) {
+        if (e.target.files[0].type.split('/')[0]!="image") {
+            alert("Please import image");
+            e.target.value="";
+        }
+        else {
+            var imgShowElement=e.target.nextElementSibling;
+            var image=e.target.files[0].name;
+            imgShowElement.innerHTML=`
+                <div class="img_show_container">
+                    <img src="http://localhost/BMW/public/images/${image}" alt="image">
+                    <div>
+                        <input type="button" value="Cancel" id="cancel_img_show">
+                    </div>
+                </div>
+            `;
+
+            var cancelImgShowElement=document.querySelector('#cancel_img_show');
+            if (cancelImgShowElement) {
+                cancelImgShowElement.onclick=function(e) {
+                    e.target.closest('.form__group').querySelector('input[id="image"]').value="";
+                    e.target.closest('.img_show_container').remove();
+                }
+            }
+        }
+    }
+
+    
 </script>

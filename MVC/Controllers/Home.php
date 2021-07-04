@@ -3,6 +3,7 @@
         function __construct() {
             $this->view("layout1", [
                 "Page" => "home",
+                "titlePage" => "Home"
             ]);
         }
     }
