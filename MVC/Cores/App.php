@@ -11,6 +11,9 @@
                 if (file_exists("./MVC/Controllers/{$arr[0]}.php")) {
                     $this->controller=$arr[0];
                 }
+                else {
+                    header("Location: http://localhost/BMW/ErrorPage");
+                }
                 unset($arr[0]);
             }
 
@@ -20,6 +23,9 @@
             if (isset($arr[1])) {
                 if (method_exists($this->controller, $arr[1])) {
                     $this->action=$arr[1];
+                }
+                else {
+                    header("Location: http://localhost/BMW/ErrorPage");
                 }
                 unset($arr[1]);
             }
