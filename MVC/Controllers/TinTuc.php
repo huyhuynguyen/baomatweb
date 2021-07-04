@@ -88,7 +88,7 @@
         }
 
         function InsertComment() {
-            $noidung=strip_tags($_POST["noidung"]);
+            $noidung=strip_tags(addslashes($_POST["noidung"]));
             $username=$_POST["username"];
             $idtin=$_POST["idtin"];
 
@@ -97,13 +97,13 @@
         }
 
         function InsertPhanHoi() {
-            $noidung=strip_tags($_POST["noidung"]);
+            $noidung=strip_tags(addslashes($_POST["noidung"]));
             $username=$_POST["username"];
             $idcomment=$_POST["idcomment"];
 
             $result=$this->model("ResponseModel")->InsertResponse($noidung, $username, $idcomment);
             
-            echo $noidung;
+            echo json_encode($result);
         }
     }
 ?>

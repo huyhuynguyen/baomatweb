@@ -104,34 +104,23 @@
 
     // hiển thị tin tức
     var itemTinTuc=document.querySelector('#detail-tintuc');
-    var obj=<?php 
-            if (isset($data['itemTin']))
-                echo $data['itemTin']; 
-            else 
-                echo "null";
-        ?>;
-    var htmls="";
-    if (obj==null) {
-        htmls=`<p> No News </p>`;
-    }
-    else {
-        htmls=`
-            <div class="main__title-header">
-                <h2 class="main__title-heading">${obj["tieude"]}</h2>
-            </div>
-            <div class="main__category-container">
-                <p class="main__category">Thể loại: <i>${obj["theloai"]}</i></p>
-            </div>
-            
-            <div class="main__tintuc-image-container">
-                <img src="http://localhost/BMW/public/images/${obj["hinhanh"]}" alt="" class="main__tintuc-image">
-            </div>
+    var obj=<?php echo $data['itemTin']; ?>;
+    var htmls=`
+        <div class="main__title-header">
+            <h2 class="main__title-heading">${obj["tieude"]}</h2>
+        </div>
+        <div class="main__category-container">
+            <p class="main__category">Thể loại: <i>${obj["theloai"]}</i></p>
+        </div>
+        
+        <div class="main__tintuc-image-container">
+            <img src="http://localhost/BMW/public/images/${obj["hinhanh"]}" alt="" class="main__tintuc-image">
+        </div>
 
-            <div class="main__content-container">
-                <p class="main__content">${obj["noidung"]}</p>
-            </div>
-        `;
-    }
+        <div class="main__content-container">
+            <p class="main__content">${obj["noidung"]}</p>
+        </div>
+    `;
     itemTinTuc.innerHTML=htmls;
 
     
@@ -242,7 +231,7 @@
                                     $.ajax({
                                         url: 'http://localhost/BMW/TinTuc/InsertPhanHoi',
                                         type: 'post',
-                                        dataType: 'text',
+                                        dataType: 'json',
                                         data: {
                                             noidung: commentContentElement.value.trim(),
                                             username: currentUser["username"],
@@ -256,7 +245,7 @@
                                                         <img src="http://localhost/BMW/public/images/${currentUser["avatar"]}" alt="" width="37px" height="37px">
                                                         <div class="item-response-container">
                                                             <h5 class="item-response-fullname">${currentUser["fullname"]}</h5>
-                                                            <p class="item-response-content">${data}</p>
+                                                            <p class="item-response-content">${data[data.length-1]["noidung"]}</p>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -297,7 +286,7 @@
                 $.ajax({
                     url: 'http://localhost/BMW/TinTuc/InsertPhanHoi',
                     type: 'post',
-                    dataType: 'text',
+                    dataType: 'json',
                     data: {
                         noidung: commentContentElement.value.trim(),
                         username: currentUser["username"],
@@ -311,7 +300,7 @@
                                     <img src="http://localhost/BMW/public/images/${currentUser["avatar"]}" alt="" width="37px" height="37px">
                                     <div class="item-response-container">
                                         <h5 class="item-response-fullname">${currentUser["fullname"]}</h5>
-                                        <p class="item-response-content">${data}</p>
+                                        <p class="item-response-content">${data[data.length-1]["noidung"]}</p>
                                     </div>
                                 </div>
                             </li>

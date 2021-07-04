@@ -25,7 +25,7 @@
             $stmt->execute();
             $result = $stmt->get_result();
             if ($result->num_rows==0)
-                return null;
+                header("Location: http://localhost/BMW/ErrorPage");
             
             $row=$result->fetch_assoc();
             $obj=array(
@@ -95,7 +95,7 @@
         }
 
         function searchTinTuc($searchText) {
-            $_SESSION["timkiem"]=$searchText;
+            $_SESSION["timkiem"]=stripslashes($searchText);
             $qr="SELECT * FROM tintuc WHERE tieude LIKE '%$searchText%'";
             $result=$this->conn->query($qr);
             $arr=[];

@@ -16,6 +16,7 @@
             if (isset($_POST["login"])) {
                 $username=strip_tags($_POST["username"]);
                 $password=strip_tags($_POST["password"]);
+                $password=hash("sha256", $password);
 
                 $fullname=$this->model("TaiKhoanModel")->getFullName($username, $password);
                 if ($fullname) {

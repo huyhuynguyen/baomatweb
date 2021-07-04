@@ -16,6 +16,7 @@
             if (isset($_POST["signup"])) {
                 $username=strip_tags($_POST["username"]);
                 $password=strip_tags($_POST["password"]);
+                $password=hash("sha256", $password);
                 $fullname=strip_tags($_POST["fullname"]);
 
                 if ($this->model("TaikhoanModel")->checkSignUp($username)==0) {

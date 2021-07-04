@@ -31,7 +31,7 @@
         }
 
         function insertUser($username, $password, $fullname) {
-            $qr="INSERT INTO user (username, password, fullname, role) VALUES(?, ?, ?, 1)";
+            $qr="INSERT INTO user (username, password, fullname, avatar, role) VALUES(?, ?, ?, 'user.png', 1)";
             $stmt = $this->conn->prepare($qr);
             $stmt->bind_param("sss", $username, $password, $fullname);
             $stmt->execute();
