@@ -22,6 +22,7 @@
                     $this->model("TaikhoanModel")->insertUser($username, $password, $fullname);
                     $_SESSION["fullname"]=$fullname;
                     $_SESSION["username"]=$username;
+                    $_SESSION["role"]=$this->model("TaiKhoanModel")->getRole($username, $password);
                     header("Location: http://localhost/BMW/Home");
                 }
                 else {
