@@ -17,6 +17,9 @@
             <div class="form__resetpassword-group">
                 <label for="password">Password (*): </label>
                 <input type="password" name="password" id="password" required>
+                <div class="password_check-container">
+                    <span id="password_check">Lưu ý: Mật khẩu ít nhất 8 ký tự gồm: chữ thường, số, in hoa và ký tự đặc biệt</span>
+                </div>
             </div>
             <div class="form__resetpassword-group">
                 <label for="retype-password">Confirm Password (*): </label>
@@ -58,9 +61,12 @@
 
     var formElement=document.querySelector('.main__form-resetpassword');
     formElement.onsubmit=function(e) {
-        if (checkRetype==false)
-            e.preventDefault();
-        else 
+        var passwordElement=e.target.querySelector('input[id="password"]');
+        if (checkRetype==true && (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/.test(passwordElement.value) && password.value.length>=8))
             e.submit();
+        else {
+            e.preventDefault();
+            alert("Vui lòng nhập đúng mật khẩu hoặc format mật khẩu");
+        }
     }
 </script>

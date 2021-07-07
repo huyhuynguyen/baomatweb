@@ -49,8 +49,30 @@
     outline: none;
 }
 
+.main__list-tintuc-title-filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
 .main__list-tintuc-title {
-    margin-bottom: 30px;
+    margin: 0;
+}
+
+.main__list-tintuc-filter-container {
+    display: flex;
+    align-items: center;
+}
+
+.main__list-tintuc-filter-container p {
+    margin: 0 10px 0 0;
+    font-size: 1.7rem;
+}
+
+select[id="tintuc-filter"] {
+    font-size: 1.5rem;
+    padding: 2px 8px;
 }
 
 .list-tintuc {

@@ -46,8 +46,20 @@
     background-color: #1894b3;
 }
 
-.main__forgot-password-container {
-    margin-top: 5px;
+.main__remember-forgot-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.main__remember-username-container {
+    display: flex;
+    align-items: center;
+}
+
+.main__remember-username {
+    margin: 0;
 }
 
 .main__forgot-password-link {

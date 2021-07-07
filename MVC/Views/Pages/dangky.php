@@ -17,6 +17,9 @@
             <div class="form__signup-group">
                 <label for="password">Password (*): </label>
                 <input type="password" name="password" id="password" required>
+                <div class="password_check-container">
+                    <span id="password_check">Lưu ý: Mật khẩu ít nhất 8 ký tự gồm: chữ thường, số, in hoa và ký tự đặc biệt</span>
+                </div>
             </div>
             <div class="form__signup-group">
                 <label for="fullname">Fullname (*): </label>
@@ -39,5 +42,16 @@
         <?php
             unset($_SESSION["err_signup"]);
         ?>
+    }
+
+    var formElement=document.querySelector('.main__form-signup');
+    formElement.onsubmit=function(e) {
+        var passwordElement=e.target.querySelector('input[id="password"]');
+        if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/.test(passwordElement.value) && password.value.length>=8)
+            e.submit();
+        else {
+            e.preventDefault();
+            alert("Mật khẩu không đúng format");
+        }
     }
 </script>

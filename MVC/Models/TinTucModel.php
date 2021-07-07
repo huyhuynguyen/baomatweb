@@ -106,6 +106,19 @@
             }
             return json_encode($arr);
         }
+
+        function getTinTucsForTheLoai($theloaiId) {
+            $qr="SELECT id, tieude, noidung, hinhanh FROM tintuc WHERE idloai=?";
+            $stmt=$this->conn->prepare($qr);
+            $stmt->bind_param("i", $theloaiId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $arr=[];
+            while($row=$result->fetch_assoc()) {
+                array_push($arr, $row);
+            }
+            return json_encode($arr);
+        }
         
     }
 ?>

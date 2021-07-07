@@ -33,9 +33,19 @@
 </head>
 <body>
     <?php
-        if (!isset($_SESSION["username"])) {
+        // auto logout after 15 minutes with inactivity
+        if (isset($_SESSION["username"])) {
+            if (time() - $_SESSION["last_login_timestamp"] > 900) {
+                header("Location: http://localhost/BMW/Unset");
+            }
+            else {
+                $_SESSION["last_login_timestamp"]=time();
+            }
+        }   
+        else {
             header("Location: http://localhost/BMW/Unset");
         }
+
     ?>
     <div class="app">
         <header>

@@ -11,6 +11,7 @@
             if (isset($_POST["reset_password"])) {
                 $username=strip_tags($_POST["username"]);
                 $password=strip_tags($_POST["password"]);
+                $password=hash("sha256", $password);
                 $retype_password=strip_tags($_POST["retype-password"]);
 
                 $result = $this->model("TaiKhoanModel")->ResetPassword($username, $password);

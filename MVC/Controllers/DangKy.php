@@ -24,6 +24,7 @@
                     $_SESSION["fullname"]=$fullname;
                     $_SESSION["username"]=$username;
                     $_SESSION["role"]=$this->model("TaiKhoanModel")->getRole($username, $password);
+                    $_SESSION["last_login_timestamp"]=time();
                     header("Location: http://localhost/BMW/Home");
                 }
                 else {

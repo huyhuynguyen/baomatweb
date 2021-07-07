@@ -2,10 +2,12 @@
     class TinTuc extends Controller {
         function NewsList() {
             $arrTinTuc=$this->model("TinTucModel")->getAllTinTuc();
+            $arrTheLoai=$this->model("TinTucModel")->getAllTheLoai();
             $this->view("layout1", [
                 "Page" => "tintuc",
                 "titlePage" => "Tin Tức",
-                "arrTinTuc" => $arrTinTuc
+                "arrTinTuc" => $arrTinTuc,
+                "arrTheLoai" => $arrTheLoai
             ]);
         }
         
@@ -104,6 +106,15 @@
             $result=$this->model("ResponseModel")->InsertResponse($noidung, $username, $idcomment);
             
             echo json_encode($result);
+        }
+
+        function SelectedTheLoai() {
+            $theloaiId=$_POST["theloai"];
+            if ($theloaiId=="all") 
+                $result = $this->model("TinTucModel")->getAllTinTuc();
+            else 
+                $result=$this->model("TinTucModel")->getTinTucsForTheLoai($theloaiId);
+            echo $result;
         }
     }
 ?>
