@@ -62,6 +62,7 @@
                 <div class="header__content-btnLogout-container">
                     <div>
                         <p>Fullname: <span><?php echo $_SESSION["fullname"] ?></span></p>
+                        <a href="http://localhost/BMW/ChangePassword">Đổi mật khẩu</a>
                     </div>
                     <div class="header__logoutBtn-container">
                         <a href="http://localhost/BMW/Unset" class="header__logoutBtn-link">

@@ -13,6 +13,8 @@
             echo "<link rel='stylesheet' href='http://localhost/BMW/public/css/dangky.css'>";
         if ($data["Page"]=="forgotpassword")
             echo "<link rel='stylesheet' href='http://localhost/BMW/public/css/forgotpassword.css'>";
+        if ($data["Page"]=="changepassword")
+            echo "<link rel='stylesheet' href='http://localhost/BMW/public/css/changepassword.css'>";
     ?>
 </head>
 <body>

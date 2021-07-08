@@ -63,6 +63,29 @@
 
             return 0;
         }
+
+        function ChangePassword($username, $oldpassword, $new_password) {
+            if ($oldpassword===$new_password) {
+                return 1;
+            }
+
+            $qr1="SELECT username FROM user WHERE username=? AND password=?";
+            $stmt1 = $this->conn->prepare($qr1);
+            $stmt1->bind_param("ss", $username, $oldpassword);
+            $stmt1->execute();
+            $result = $stmt1->get_result(); // get the mysqli result
+            
+            if ($result->num_rows==1) {
+                $qr="UPDATE user SET password=? WHERE username=?";
+                $stmt = $this->conn->prepare($qr);
+                $stmt->bind_param("ss", $new_password, $username);
+                $stmt->execute();
+
+                return 1;
+            }
+
+            return 0;
+        }
         
     }
 ?>
