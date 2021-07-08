@@ -88,7 +88,7 @@
         var changeImageBlock=document.querySelector('#container-changeImage');
         changeImageBlock.innerHTML=`
             <div>
-                <input type='file' name="image_file_change" id="image_file_change">
+                <input type='file' name="image_file_change" id="image_file_change" accept="image/*">
                 <input type="button" value="Cancel" id="cancel_changeImage">
                 <input type="button" value="Delete image" id="delete_changeImage">
             </div>
@@ -107,10 +107,17 @@
         // change image
         var inputFileImg=e.target.parentNode.parentNode.querySelector('input[id="image_file_change"]');
         inputFileImg.onchange=function(e) {
-            var imageName=e.target.files[0].name;
-            var imgChangeElement=e.target.closest('.form__group').querySelector('img#image');
-            imgChangeElement.setAttribute('src', `http://localhost/BMW/public/images/${imageName}`);
-            e.target.closest('.form__group').querySelector('input[id="imageName"]').value=imageName;
+            
+            if (e.target.files[0].type.split('/')[0]!="image") {
+                alert("Please import image");
+                e.target.value="";
+            }
+            else {
+                var imageName=e.target.files[0].name;
+                var imgChangeElement=e.target.closest('.form__group').querySelector('img#image');
+                imgChangeElement.setAttribute('src', `http://localhost/BMW/public/images/${imageName}`);
+                e.target.closest('.form__group').querySelector('input[id="imageName"]').value=imageName;
+            }
         }
 
         // xoa image
@@ -119,6 +126,7 @@
             var imgChangeElement=e.target.closest('.form__group').querySelector('img#image');
             imgChangeElement.setAttribute('src', '#');
             e.target.closest('.form__group').querySelector('input[id="imageName"]').value="";
+            e.target.closest('.form__group').querySelector('input[id="image_file_change"]').value="";
         }
 
     }
