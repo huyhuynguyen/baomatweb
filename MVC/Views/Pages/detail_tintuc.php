@@ -149,7 +149,7 @@
                     dataType: 'json',
                     data: {
                         noidung: commentContentElement.value.trim(),
-                        username: currentUser["username"],
+                        // username: currentUser["username"],
                         idtin: obj["id"]
                     },
                     success: function(data) {
@@ -234,7 +234,7 @@
                                         dataType: 'json',
                                         data: {
                                             noidung: commentContentElement.value.trim(),
-                                            username: currentUser["username"],
+                                            // username: currentUser["username"],
                                             idcomment: e.target.closest('li[data]').getAttribute('data')
                                         },
                                         success: function(data) {
@@ -289,7 +289,7 @@
                     dataType: 'json',
                     data: {
                         noidung: commentContentElement.value.trim(),
-                        username: currentUser["username"],
+                        // username: currentUser["username"],
                         idcomment: e.target.closest('li[data]').getAttribute('data')
                     },
                     success: function(data) {

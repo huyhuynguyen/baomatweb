@@ -39,8 +39,11 @@
 
         function getCurrentUser() {
             $username=$_SESSION["username"];
-            $qr="SELECT * FROM user WHERE username='$username'";
-            $result=$this->conn->query($qr);
+            $qr="SELECT fullname, avatar FROM user WHERE username=?";
+            $stmt = $this->conn->prepare($qr); 
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $result = $stmt->get_result(); // get the mysqli result
             $row=$result->fetch_assoc();
             return json_encode($row);
         }

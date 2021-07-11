@@ -18,12 +18,18 @@
             return json_encode($arr);
         }
 
-        function InsertComment($noidung, $username, $idtin) {
-            $qr="INSERT INTO comment (noidung, username, idtin) VALUES('$noidung', '$username', '$idtin')";
-            $this->conn->query($qr);
+        function InsertComment($noidung, $idtin) {
+            $qr="INSERT INTO comment (noidung, username, idtin) VALUES(?, ?, ?)";
+            $stmt = $this->conn->prepare($qr);
+            $stmt->bind_param("ssi", $noidung, $_SESSION["username"], $idtin);
+            $stmt->execute();
 
-            $qr1="SELECT id, noidung FROM comment WHERE noidung='$noidung' AND username='$username' AND idtin='$idtin'";
-            $result=$this->conn->query($qr1);
+            $qr1="SELECT id, noidung FROM comment WHERE noidung=? AND username=? AND idtin=?";
+            $stmt1 = $this->conn->prepare($qr1); 
+            $stmt1->bind_param("ssi", $noidung, $_SESSION["username"], $idtin);
+            $stmt1->execute();
+            $result = $stmt1->get_result();
+
             $row=$result->fetch_assoc();
             return $row;
         }
